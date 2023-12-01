@@ -162,6 +162,7 @@ cython_debug/
 
 labels/
 data/
+nnUNet_raw/
 
 labels.zip
 data.zip
