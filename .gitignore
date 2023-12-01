@@ -161,3 +161,8 @@ cython_debug/
 
 
 nnUNet/
+labels/
+data/
+
+labels.zip
+data.zip
