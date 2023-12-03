@@ -9,8 +9,13 @@
     * **images**: mri scans 
 * **scripts** contains scripts
     * **create_dataset.py**: creates dataset from the data, run it from the scripts format with `python create_dataset.py`
+* **set_env.sh**: sets the environment variables needed
 
 
 # Setup:
 * Create a new environment:
 * after cloning ( or if nnUNet submodule is empty ) run : `git submodule update --init --recursive`
+
+
+# HOW TO RUN
+* Run `source set_env.sh` to set the local variables ( needs to be run each time a terminal is opened )
