@@ -54,6 +54,9 @@ def create_nnunet_dataset(
         "description": "spinal cord mri",
         "description": "spinal cord mri",
         "file_ending": ".nii.gz",
+        "chanel_names": {
+            "0": "T1",
+        },
         "modality": {
             "0": "mri",
         },
