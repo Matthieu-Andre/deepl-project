@@ -52,6 +52,8 @@ def create_nnunet_dataset(
     dataset_json = {
         "name": "spine-mri",
         "description": "spinal cord mri",
+        "description": "spinal cord mri",
+        "file_ending": ".nii.gz",
         "modality": {
             "0": "mri",
         },
