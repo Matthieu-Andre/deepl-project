@@ -54,8 +54,8 @@ def create_nnunet_dataset(
         "description": "spinal cord mri",
         "description": "spinal cord mri",
         "file_ending": ".nii.gz",
-        "chanel_names": {
-            "0": "T1",
+        "channel_names": {
+            "0": "T2",
         },
         "modality": {
             "0": "mri",
@@ -64,7 +64,7 @@ def create_nnunet_dataset(
             "background": 0,
             "bending artefact": 1,
         },
-        "numTraining": len(os.listdir(images_folder)),
+        "numTraining": len(os.listdir(train_folder)),
     }
 
     with open(os.path.join(dataset_folder, "dataset.json"), "w") as json_file:
