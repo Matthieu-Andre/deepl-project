@@ -1,27 +1,30 @@
 image_folder="../data/images/"
-label_folder="../data/labels"
+label_folder="../data/labels/"
 processed_folder="../data/processed/"
 
-for image in "$image_folder"/*; do
-    image_path="$image"
-    label_path="$label_folder/$(basename "$image" | sed 's/_0000//')"
+for image in `ls $image_folder`; do
+    
+    image_path="${image_folder}${image}"
+    label_path="${label_folder}${image%_0000*}.nii.gz"
 
-    # Get the centerline of the spinal cord
-    centerline=$(sct_get_centerline -i "$image_path")
+    centerline_path="${processed_folder}${image%_0000*}_centerline.nii.gz"
+    mask_path="${processed_folder}${image%_0000*}_mask.nii.gz"
 
-    # Fix where to store the cropped image and label
-    cropped_image="$processed_folder/cropped_$(basename "$image")"
-    cropped_label="$processed_folder/cropped_label/$(basename "$image")"
+    cropped_image_path="${processed_folder}${image%_0000*}_i_p.nii.gz"
+    sampled_image_path="${processed_folder}${image%_0000*}_i_p_s.nii.gz"
 
-    # Crop the image
-    sct_extract_metric -i "$image_path" -size 35mm -f "$centerline" -o "$cropped_image"
-    # Crop the label
-    sct_extract_metric -i "$label_path" -size 35mm -f "$centerline" -o "$cropped_label"
+    cropped_label_path="${processed_folder}${image%_0000*}_l_p.nii.gz"
+    sampled_label_path="${processed_folder}${image%_0000*}_l_p_s.nii.gz"
 
-    # Resize the images to make them smaller
-    cropped_resampled_image="$processed_folder/small_cropped_$(basename "$image")"
-    cropped_resampled_label="$processed_folder/small_cropped_label/$(basename "$image")"
+    sct_get_centerline -i $image_path -c 't2' -o $centerline_path -v '0'
+    sct_create_mask -i $image_path -p centerline,$centerline_path -size 35mm -f box -o $mask_path -v '0'
+    sct_crop_image -i $image_path -m $mask_path -o $cropped_image_path -v '0'
+    sct_crop_image -i $label_path -m $mask_path -o $cropped_label_path -v '0'
+    sct_resample -i $cropped_image_path -mm '0.5x0.5x0.5' -o $sampled_image_path -v '0'
+    sct_resample -i $cropped_label_path -mm '0.5x0.5x0.5' -o $sampled_label_path -v '0'
 
-    sct_resample -i "$cropped_image" -mm 0.5x0.5x0.5 -o "$cropped_resampled_image"
-    sct_resample -i "$cropped_label" -mm 0.5x0.5x0.5 -o "$cropped_resampled_label"
+    rm $mask_path
+    rm $cropped_image_path
+    rm $cropped_label_path
+    rm $centerline_path
 done
