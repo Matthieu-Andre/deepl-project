@@ -1,20 +1,21 @@
-image_folder="../data/images/"
-label_folder="../data/labels/"
-processed_folder="../data/processed/"
+image_folder="../data/raw_images/"
+label_folder="../data/raw_labels/"
+processed_folder_image="../data/images/"
+processed_folder_label="../data/labels/"
 
 for image in `ls $image_folder`; do
     
     image_path="${image_folder}${image}"
     label_path="${label_folder}${image%_0000*}.nii.gz"
 
-    centerline_path="${processed_folder}${image%_0000*}_centerline.nii.gz"
-    mask_path="${processed_folder}${image%_0000*}_mask.nii.gz"
+    centerline_path="${processed_folder_image}centerline_${image}"
+    mask_path="${processed_folder_label}mask_${image}"
 
-    cropped_image_path="${processed_folder}${image%_0000*}_i_p.nii.gz"
-    sampled_image_path="${processed_folder}${image%_0000*}_i_p_s.nii.gz"
+    cropped_image_path="${processed_folder_image}image_cropped_${image}"
+    sampled_image_path="${processed_folder_image}${image}"
 
-    cropped_label_path="${processed_folder}${image%_0000*}_l_p.nii.gz"
-    sampled_label_path="${processed_folder}${image%_0000*}_l_p_s.nii.gz"
+    cropped_label_path="${processed_folder_label}label_cropped_${image%_0000*}.nii.gz"
+    sampled_label_path="${processed_folder_label}${image%_0000*}.nii.gz"
 
     sct_get_centerline -i $image_path -c 't2' -o $centerline_path -v '0'
     sct_create_mask -i $image_path -p centerline,$centerline_path -size 35mm -f box -o $mask_path -v '0'
@@ -25,6 +26,7 @@ for image in `ls $image_folder`; do
 
     rm $mask_path
     rm $cropped_image_path
+    rm $centerline_path
     rm $cropped_label_path
     rm $centerline_path
 done
