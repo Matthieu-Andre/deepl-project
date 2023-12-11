@@ -22,6 +22,7 @@
 To run this command on new data, it must follow the following structure : 
 * in a `raw_images` folder, you should have all your images with the following nomenclature `your_image_0000.nii.gz` 
 * in a `raw_labels` folder, you should have all your labels with the following nomenclature `your_image.nii.gz` for the label corresponding to this image `your_image_0000.nii.gz` 
+
 When this step is validated, to run the pre processing :
 * go to folder scripts
 * run bash cropping.sh
