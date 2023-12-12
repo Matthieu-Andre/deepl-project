@@ -1,5 +1,9 @@
 image_folder="../data/raw_images/"
 label_folder="../data/raw_labels/"
+
+mkdir ../data/images
+mkdir ../data/labels
+
 processed_folder_image="../data/images/"
 processed_folder_label="../data/labels/"
 
@@ -9,6 +13,7 @@ for image in `ls $image_folder`; do
     label_path="${label_folder}${image%_0000*}.nii.gz"
 
     centerline_path="${processed_folder_image}centerline_${image}"
+    centerline_path_csv="${processed_folder_image}centerline_${image%_0000*}_0000.csv"
     mask_path="${processed_folder_label}mask_${image}"
 
     cropped_image_path="${processed_folder_image}image_cropped_${image}"
@@ -27,6 +32,7 @@ for image in `ls $image_folder`; do
     rm $mask_path
     rm $cropped_image_path
     rm $centerline_path
+    rm $centerline_path_csv
     rm $cropped_label_path
     rm $centerline_path
 done
