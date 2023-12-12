@@ -18,7 +18,7 @@
 * download sct: https://spinalcordtoolbox.com/user_section/installation/linux.html
     * bash install_sct-6.1_linux.sh
 * install the correct version of pytorch for your computer: https://pytorch.org/get-started/locally/
-* pip install nnUNetv2
+* go to nnUNet and run `pip install -e .`
 
 # Preprocess data
 * go to folder scripts
@@ -28,4 +28,6 @@
 * Run `source set_env.sh` to set the local variables ( needs to be run each time a terminal is opened )
 * Run `python create_dataset.py`
 * Run nnUNetv2_plan_and_preprocess -d 1 --verify_dataset_integrity
-* Run nnUNetv2_train 1 3d_fullres all -num_gpus 3 (of course, change to the number of GPU you have)
+* Run nnUNetv2_train 1 3d_fullres all  
+* If you want to run on a specific GPU:    
+     CUDA_VISIBLE_DEVICES=0 nnUNetv2_train 1 3d_fullres all & # train on GPU 0
