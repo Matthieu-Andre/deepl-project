@@ -3,8 +3,7 @@
 ### Aline Brunner, Matthieu André, Louise Font, supervision by Sergio Hernandez Charpak
 
 ## Structure
-* **sergio_code**: the 3 scripts that Sergio gave us #on les enlève non ? ca a pas de sens de les laisser je pense
-* **nnUNet**: the cloned nnUNet repository that contains all the model structure #(should not be pushed, added to gitignore)
+* **nnUNet**: the cloned nnUNet repository that contains all the model structure
 * **data**: folder containing all the data. This data has to be downloaded from the Google Drive and put at the correct place in the repository to allow a correct running of the code. It contains 2 sub-folders with all the input and should be in `.nii.gz` format : 
     * **raw_labels**: contains 42 files with the labels identifying the artefacts in the corresponding 43 images
     * **raw_images**: contains 42 images of MRI scans 
