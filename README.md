@@ -35,9 +35,9 @@ You can then go to scripts folder and from there run the following command : `ba
 For more details, we invite you to visit the SCT documentation : https://spinalcordtoolbox.com/user_section/command-line.html#main-tools
 
 ## How to run the model from your terminal
-* Run `source set_env.sh` to set the local variables ( needs to be run each time a terminal is opened )
-* Run `python create_dataset.py`
-* Run nnUNetv2_plan_and_preprocess -d 1 --verify_dataset_integrity
-* Run nnUNetv2_train 1 3d_fullres all  
+* From the root of the repositary run `source set_env.sh` to set the local variables (this needs to be run each time a terminal is opened)
+* Then go to the scripts folder and run `python create_dataset.py`
+* Then run `nnUNetv2_plan_and_preprocess -d 1 --verify_dataset_integrity` 
+* Finally run `nnUNetv2_train 1 3d_fullres all` # to change according to chosen model  
 * If you want to run on a specific GPU:    
-     CUDA_VISIBLE_DEVICES=0 nnUNetv2_train 1 3d_fullres all & # train on GPU 0
+     `CUDA_VISIBLE_DEVICES=0 nnUNetv2_train 1 3d_fullres all & train on GPU 0`
