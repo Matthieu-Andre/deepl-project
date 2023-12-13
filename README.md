@@ -1,6 +1,8 @@
 # Deep learning framework for automatic detection and segmentation of bending artefact in MRI volumes of the spinal cord
 ## CS-502 : Deep Learning in biomedicine - Project December 2023
-### Aline Brunner, Matthieu André, Louise Font, supervision by Sergio Hernandez Charpak
+### Aline Brunner, Matthieu André, Louise Font, supervision by Sergio Hernandez Charpak, .NeuroRestore
+
+![Logo](/data_and_seg.png)
 
 ## Structure
 * **nnUNet**: the cloned nnUNet repository that contains all the model structure
