@@ -45,5 +45,6 @@ For more details, we invite you to visit the SCT documentation : https://spinalc
 * Finally run `nnUNetv2_train 1 3d_fullres all` # to change according to chosen model  
 * If you want to run on a specific GPU:    
      `CUDA_VISIBLE_DEVICES=0 nnUNetv2_train 1 3d_fullres all & train on GPU 0`
-* To predict new labels, use this following command:      
+* To set the number of epochs to 2000 you have to go to `nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py` and then at line 147 change the number.
+* Then to predict new labels, use this following command:      
     `nnUNetv2_predict -i nnUNet_raw/Dataset001_spine-mri/imagesTs -o nnUNet_results/Dataset001_spine-mri/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_all/inferences -d 1 -c 3d_fullres -f all`
