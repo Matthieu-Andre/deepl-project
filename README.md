@@ -38,6 +38,7 @@ To process the data it must follow the following structure :
 You can then go to scripts folder and from there run the following command : `bash cropping.sh`. This will create 2 new folders `labels` and `images` containing the masks around the spine and processed labels and images respectively following the exact same nomenclature as the raw data. This script crops the images to 35mm box around the spinal cord and down-samples the images with a 0.5 ratio. If you wish to change these parameters, you should modifiy these lines of code : 
 * `sct_create_mask -i $image_path -p centerline,$centerline_path -size 35mm -f box -o $mask_path -v '0'` to change the size of the box at `-size`
 * `sct_resample -i $cropped_image_path -mm '0.5x0.5x0.5' -o $sampled_image_path -v '0'` and `sct_resample -i $cropped_label_path -mm '0.5x0.5x0.5' -o $sampled_label_path -v '0'` to change the sampling factor under the `-mm` parameter
+
 For more details, we invite you to visit the SCT documentation : https://spinalcordtoolbox.com/user_section/command-line.html#main-tools
 
 ## How to run the model from your terminal
