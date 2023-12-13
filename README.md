@@ -48,3 +48,5 @@ For more details, we invite you to visit the SCT documentation : https://spinalc
 * To set the number of epochs to 2000 you have to go to `nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py` and then at line 147 change the number.
 * Then to predict new labels, use this following command:      
     `nnUNetv2_predict -i nnUNet_raw/Dataset001_spine-mri/imagesTs -o nnUNet_results/Dataset001_spine-mri/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_all/inferences -d 1 -c 3d_fullres -f all`
+
+For more details we invite you to visit the [nnUNetv2 documentation](https://github.com/MIC-DKFZ/nnUNet)
