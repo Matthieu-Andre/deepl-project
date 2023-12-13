@@ -11,6 +11,7 @@
     * `cropping.sh` : script that runs the pre-processing of all the data
     * `create_dataset.py`: creates dataset from the data, run it from the scripts format with `python create_dataset.py`
 * **set_env.sh**: script that sets the required environment variables
+* **unpack_and_organize.py**: run to unpack downloaded dataset and organize it into the data folder
 
 ## Setup:
 Before running the model, you should follow these steps to make sure you have all the necessary packages and files.
@@ -23,6 +24,10 @@ Before running the model, you should follow these steps to make sure you have al
 * Make sure you have the correct version of pytorch installed for your computer. All instructions are to found on this page: https://pytorch.org/get-started/locally/
 * Finally go to the folder nnUNet with `cd nnUNet` and run `pip install -e .` to install nnUNet.
 You are now all ready to use the model, you just need to load you data according to the folder structure presented above.
+
+## Download data
+* Download data from the drive ( link provided on moodle submission ) place the compressed folders at the root of the repo 
+* Then run `python unpack_and_organize.py`
 
 ## Preprocess data
 To process the data it must follow the following structure : 
