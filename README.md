@@ -33,7 +33,7 @@ You are now all ready to use the model, you just need to load you data according
 To process the data it must follow the following structure : 
 * in a `raw_images` folder, you should have all your images with the following nomenclature `your_image_0000.nii.gz` 
 * in a `raw_labels` folder, you should have all your labels with the following nomenclature `your_image.nii.gz` for the label corresponding to this image `your_image_0000.nii.gz` 
-You can then go to scripts folder and from there run the following command : `bash cropping.sh`. This will create 2 new folders in `data` called `labels` and `images` and will contain the processed labels and images respectively following the exact same nomenclature as the raw data. This script crops the images to 35mm box around the spinal cord and down-samples the images with a 0.5 ratio. If you wish to change these parameters, you should modifiy these lines of code : 
+You can then go to scripts folder and from there run the following command : `bash cropping.sh`. This will create 3 new folders in `data` called `masks`,`labels` and `images` and will contain the masks around the spine and processed labels and images respectively following the exact same nomenclature as the raw data. This script crops the images to 35mm box around the spinal cord and down-samples the images with a 0.5 ratio. If you wish to change these parameters, you should modifiy these lines of code : 
 * `sct_create_mask -i $image_path -p centerline,$centerline_path -size 35mm -f box -o $mask_path -v '0'` to change the size of the box at `-size`
 * `sct_resample -i $cropped_image_path -mm '0.5x0.5x0.5' -o $sampled_image_path -v '0'` and `sct_resample -i $cropped_label_path -mm '0.5x0.5x0.5' -o $sampled_label_path -v '0'` to change the sampling factor under the `-mm` parameter
 For more details, we invite you to visit the SCT documentation : https://spinalcordtoolbox.com/user_section/command-line.html#main-tools
@@ -45,3 +45,5 @@ For more details, we invite you to visit the SCT documentation : https://spinalc
 * Finally run `nnUNetv2_train 1 3d_fullres all` # to change according to chosen model  
 * If you want to run on a specific GPU:    
      `CUDA_VISIBLE_DEVICES=0 nnUNetv2_train 1 3d_fullres all & train on GPU 0`
+* To predict new labels, use this following command:      
+    `nnUNetv2_predict -i nnUNet_raw/Dataset001_spine-mri/imagesTs -o nnUNet_results/Dataset001_spine-mri/nnUNetTrainer__nnUNetPlans__3d_fullres/fold_all/inferences -d 1 -c 3d_fullres -f all`
